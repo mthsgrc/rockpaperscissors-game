@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title>Rock Paper Scissors Game</title>
+</head>
+<body>
+
+
+
+	<script type="text/javascript">
+		
+		// Random selection for the Computer
+		function computerPlay(){ 
+			let r = "rock";
+			let p = "paper";
+			let s = "scissors";
+			let computerResult = Math.random(); 			
+			if (computerResult <= 0.3333) {
+				computerResult = r;
+			} else if (computerResult > 0.3333 && computerResult <= 0.6666) {
+				computerResult = p;
+			} else {
+				computerResult = s;
+			}
+			return computerResult;
+		}
+
+		function playRound(playerSelection, computerSelection){
+			if (playerSelection == "rock" && computerSelection == "paper"){
+				console.log(playerSelection + " " + computerSelection)
+				return "You lose! Paper beats Rock";
+
+			} else if (playerSelection == "rock" && computerSelection == "scissors") {
+				console.log(playerSelection + " " + computerSelection)
+				return "You win! Rock beats Scissors";
+
+			} else if (playerSelection == "paper" &&computerSelection == "rock") {
+				console.log(playerSelection + " " + computerSelection)
+
+				return "You win! Paper beats Rock";
+			} else if (playerSelection == "paper" && computerSelection == "scissors") {
+				console.log(playerSelection + " " + computerSelection)
+
+				return "You lose! Scissors beats Paper";
+			} else if (playerSelection == "scissors" && computerSelection == "paper") {
+				console.log(playerSelection + " " + computerSelection)
+
+				return "You win! Scissors beats Paper";
+			} else if (playerSelection == "scissors" && computerSelection == "rock") {
+				console.log(playerSelection + " " + computerSelection)
+
+				return "You lose! Rock beats Scissors";
+			} else if (playerSelection == computerSelection){
+				console.log(playerSelection + " " + computerSelection)
+				return "It's a tie";
+			} else {
+				return "Choose Paper, Rock or Scissors"
+				
+			}
+		}
+
+		function game(){
+			let playerScore;
+			let computerScore;
+
+
+		}
+
+		const playerSelection = prompt("Choose your force", "Paper/Rock/Scissors").toLowerCase();
+
+		const computerSelection = computerPlay();
+
+		console.log(playRound(playerSelection, computerSelection));
+			
+
+	</script>
+</body>
+</html>
