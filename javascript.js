@@ -1,36 +1,34 @@
 
 let playerScore = 0;
 let computerScore = 0;
-// let computerSelection = computerPlay();
 let playerSelection;
+const rockBtn = document.querySelector('#rock');
+const paperBtn = document.querySelector('#paper');
+const scissorsBtn = document.querySelector('#scissors');
+const btns = document.querySelector('.gameplay');
+const playerScoreShow = document.querySelector('.playerScore');
+const computerScoreShow = document.querySelector('.computerScore');
 
 // Event for buttons
-const rockBtn = document.querySelector('#rock');
 rockBtn.addEventListener('click', function(e){
 	// computerSelection = computerPlay()
-	playerSelection = rockBtn.id;
+	// playerSelection = rockBtn.id;
 	playRound("rock");
 });
 
-
-const paperBtn = document.querySelector('#paper');
 paperBtn.addEventListener('click', function(e){
 	// computerSelection = computerPlay()
-	playerSelection = paperBtn.id;
+	// playerSelection = paperBtn.id;
 	playRound("paper");
 });
 
-const scissorsBtn = document.querySelector('#scissors');
 scissorsBtn.addEventListener('click', function(e){
 	// computerSelection = computerPlay()
-	playerSelection = scissorsBtn.id;
+	// playerSelection = scissorsBtn.id;
 	playRound("scissors");
 });
 
-const playerScoreShow = document.querySelector('.playerScore');
 playerScoreShow.textContent = 'Player Score: ' + playerScore;
-
-const computerScoreShow = document.querySelector('.computerScore');
 computerScoreShow.textContent = 'Computer Score: ' + computerScore;
 
 
@@ -56,10 +54,11 @@ function playRound(playerSelection, computerSelection = computerPlay()){
 
 		playerScoreShow.textContent = 'Player Score: ' + playerScore;
 		computerScoreShow.textContent = 'Computer Score: ' + computerScore;
-			if (computerScore == 5){
+			if (computerScore == 3){
 				const showWinner = document.createElement('p');
 				showWinner.textContent = "The Winner is Computer!";
 				results.appendChild(showWinner);
+				btns.classList.toggle("hidden");
 			};
 
 		return;
@@ -74,10 +73,11 @@ function playRound(playerSelection, computerSelection = computerPlay()){
 		playerScore ++;
 		playerScoreShow.textContent = 'Player Score: ' + playerScore;
 		computerScoreShow.textContent = 'Computer Score: ' + computerScore;
-			if (playerScore == 5){
+			if (playerScore == 3){
 					const showWinner = document.createElement('p');
 					showWinner.textContent = "The Winner is Player!";
 					results.appendChild(showWinner);
+					btns.classList.toggle("hidden");
 				};
 		return;
 		
@@ -87,9 +87,5 @@ function playRound(playerSelection, computerSelection = computerPlay()){
 		results.textContent = resultDescTie;		
 		return;	
 	} 
-
-
-
 }
 	
-
