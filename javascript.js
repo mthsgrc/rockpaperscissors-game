@@ -1,7 +1,6 @@
 
 let playerScore = 0;
 let computerScore = 0;
-let roundsCount = 0;
 let computerSelection = computerPlay();
 let playerSelection;
 
@@ -37,19 +36,7 @@ computerScoreShow.textContent = 'Computer Score: ' + computerScore;
 
 // Random selection option for the Computer
 function computerPlay(){ 
-	// let r = "rock";
-	// let p = "paper";
-	// let s = "scissors";
 
-	// let computerResult = Math.random(); 			
-	// if (computerResult <= 0.3333) {
-	// 	computerResult = r;
-	// } else if (computerResult > 0.3333 && computerResult <= 0.6666) {
-	// 	computerResult = p;
-	// } else {
-	// 	computerResult = s;
-	// }
-	// return computerResult;
 	let computerOptions = ['rock', 'paper', 'scissors'];
 	let computerResult = computerOptions[Math.floor(Math.random() * computerOptions.length)];
 	return computerResult;
@@ -59,6 +46,7 @@ function computerPlay(){
 function playRound(playerSelection, computerSelection){
 	const results = document.querySelector('.results');
 
+	// while(playerScore != 5 || computerScore != 5){
 
 	if ((playerSelection == "rock" && computerSelection == "paper") 
 		||(playerSelection == "paper" && computerSelection == "scissors")
@@ -70,10 +58,13 @@ function playRound(playerSelection, computerSelection){
 		computerScore ++;
 		playerScoreShow.textContent = 'Player Score: ' + playerScore;
 		computerScoreShow.textContent = 'Computer Score: ' + computerScore;
+			if (computerScore == 5){
+				const showWinner = document.createElement('p');
+				showWinner.textContent = "The Winner is Computer!";
+				results.appendChild(showWinner);
+			};
 
-
-
-		return "You lose this round!";
+		return;
 
 	} else if ((playerSelection == "rock" && computerSelection == "scissors")
 		||(playerSelection == "paper" &&computerSelection == "rock") 
@@ -85,35 +76,22 @@ function playRound(playerSelection, computerSelection){
 		playerScore ++;
 		playerScoreShow.textContent = 'Player Score: ' + playerScore;
 		computerScoreShow.textContent = 'Computer Score: ' + computerScore;
-
-
-		return "You win this round!";
+			if (playerScore == 5){
+					const showWinner = document.createElement('p');
+					showWinner.textContent = "The Winner is Player!";
+					results.appendChild(showWinner);
+				};
+		return;
 		
 	}	else if (playerSelection == computerSelection){
 		let resultDescTie = document.createElement('p');
 		resultDescTie.textContent = "You've choosen: " + playerSelection + " - " + "Computer's choosen: " + computerSelection + "\n It is a tie!";
 		results.appendChild(resultDescTie);		
-		roundsCount--;
-
-		return "It's a tie";
-
+		return;	
 	} 
+
+
+
 }
 	
-// Run five times and shows winner
-// function game(){	
-	
-// 	while (roundsCount != 5){
-// 	let playerSelection = prompt("Choose your force", "Paper - Rock - Scissors").toLowerCase();
-// 	console.log(playRound(playerSelection, computerSelection));
-// 	console.log("Player Score: " + playerScore + " Computer Score: " + computerScore);
-
-// 	roundsCount ++;
-// }
-// 	if (playerScore > computerScore) {
-// 		console.log("You win this Game =)")
-// 	} else {
-// 		console.log("You lose this Game =(")
-// 	}
-// }
 
