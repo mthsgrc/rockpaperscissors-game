@@ -31,6 +31,10 @@ header {
 	text-align: center;
 }
 
+.gamePlay {
+	margin-bottom: 15px;
+
+}
 
 .results {
 	font-family: arial;

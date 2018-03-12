@@ -1,30 +1,30 @@
 
 let playerScore = 0;
 let computerScore = 0;
-let computerSelection = computerPlay();
+// let computerSelection = computerPlay();
 let playerSelection;
 
 // Event for buttons
 const rockBtn = document.querySelector('#rock');
 rockBtn.addEventListener('click', function(e){
-	computerSelection = computerPlay()
+	// computerSelection = computerPlay()
 	playerSelection = rockBtn.id;
-	playRound(playerSelection, computerSelection);
+	playRound("rock");
 });
 
 
 const paperBtn = document.querySelector('#paper');
 paperBtn.addEventListener('click', function(e){
-	computerSelection = computerPlay()
+	// computerSelection = computerPlay()
 	playerSelection = paperBtn.id;
-	playRound(playerSelection, computerSelection);
+	playRound("paper");
 });
 
 const scissorsBtn = document.querySelector('#scissors');
 scissorsBtn.addEventListener('click', function(e){
-	computerSelection = computerPlay()
+	// computerSelection = computerPlay()
 	playerSelection = scissorsBtn.id;
-	playRound(playerSelection, computerSelection);
+	playRound("scissors");
 });
 
 const playerScoreShow = document.querySelector('.playerScore');
@@ -36,26 +36,24 @@ computerScoreShow.textContent = 'Computer Score: ' + computerScore;
 
 // Random selection option for the Computer
 function computerPlay(){ 
-
 	let computerOptions = ['rock', 'paper', 'scissors'];
 	let computerResult = computerOptions[Math.floor(Math.random() * computerOptions.length)];
 	return computerResult;
 }
 
 //Play Single Round of the Game
-function playRound(playerSelection, computerSelection){
+function playRound(playerSelection, computerSelection = computerPlay()){
 	const results = document.querySelector('.results');
-
-	// while(playerScore != 5 || computerScore != 5){
 
 	if ((playerSelection == "rock" && computerSelection == "paper") 
 		||(playerSelection == "paper" && computerSelection == "scissors")
 		||(playerSelection == "scissors" && computerSelection == "rock")){
 
 		let resultDescLose = document.createElement('p');
-		resultDescLose.textContent = "You've choosen: " + playerSelection + " - " + "Computer's choosen: " + computerSelection + "\n You lose this round!";
-		results.appendChild(resultDescLose);
+		resultDescLose  = "You've choosen: " + playerSelection + " - " + "Computer's choosen: " + computerSelection + "\n You lose this round!";
+		results.textContent = resultDescLose;
 		computerScore ++;
+
 		playerScoreShow.textContent = 'Player Score: ' + playerScore;
 		computerScoreShow.textContent = 'Computer Score: ' + computerScore;
 			if (computerScore == 5){
@@ -71,8 +69,8 @@ function playRound(playerSelection, computerSelection){
 		||(playerSelection == "scissors" && computerSelection == "paper")) {
 
 		let resultDescWin = document.createElement('p');
-		resultDescWin.textContent = "You've choosen: " + playerSelection + " - " + "Computer's choosen: " + computerSelection + "\n You won this round!";
-		results.appendChild(resultDescWin);
+		resultDescWin = "You've choosen: " + playerSelection + " - " + "Computer's choosen: " + computerSelection + "\n You won this round!";
+		results.textContent = resultDescWin;
 		playerScore ++;
 		playerScoreShow.textContent = 'Player Score: ' + playerScore;
 		computerScoreShow.textContent = 'Computer Score: ' + computerScore;
@@ -85,8 +83,8 @@ function playRound(playerSelection, computerSelection){
 		
 	}	else if (playerSelection == computerSelection){
 		let resultDescTie = document.createElement('p');
-		resultDescTie.textContent = "You've choosen: " + playerSelection + " - " + "Computer's choosen: " + computerSelection + "\n It is a tie!";
-		results.appendChild(resultDescTie);		
+		resultDescTie = "You've choosen: " + playerSelection + " - " + "Computer's choosen: " + computerSelection + "\n It is a tie!";
+		results.textContent = resultDescTie;		
 		return;	
 	} 
 
