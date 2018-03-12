@@ -11,10 +11,23 @@ header {
 	background-color: #B89090;
 }
 
+.playerScore {
+	float: left;
+	background-color: white; 
+	padding: 10px 5px;
+}
+
+.computerScore {
+	float: right;
+	background-color: white; 
+	padding: 10px 5px;
+
+}
+
 .content {
 	display: block;
 	position: relative;
-	margin-top: 50px;
+	margin-top: 70px;
 	text-align: center;
 }
 

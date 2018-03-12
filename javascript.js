@@ -28,10 +28,11 @@ scissorsBtn.addEventListener('click', function(e){
 	playRound(playerSelection, computerSelection);
 });
 
-// const results = document.querySelector('.results');
-// const para = document.createElement('p');
-// para.textContent = rockBtn.id;
-// results.appendChild(para);
+const playerScoreShow = document.querySelector('.playerScore');
+playerScoreShow.textContent = 'Player Score: ' + playerScore;
+
+const computerScoreShow = document.querySelector('.computerScore');
+computerScoreShow.textContent = 'Computer Score: ' + computerScore;
 
 
 // Random selection option for the Computer
@@ -67,6 +68,9 @@ function playRound(playerSelection, computerSelection){
 		resultDescLose.textContent = "You've choosen: " + playerSelection + " - " + "Computer's choosen: " + computerSelection + "\n You lose this round!";
 		results.appendChild(resultDescLose);
 		computerScore ++;
+		playerScoreShow.textContent = 'Player Score: ' + playerScore;
+		computerScoreShow.textContent = 'Computer Score: ' + computerScore;
+
 
 
 		return "You lose this round!";
@@ -79,6 +83,9 @@ function playRound(playerSelection, computerSelection){
 		resultDescWin.textContent = "You've choosen: " + playerSelection + " - " + "Computer's choosen: " + computerSelection + "\n You won this round!";
 		results.appendChild(resultDescWin);
 		playerScore ++;
+		playerScoreShow.textContent = 'Player Score: ' + playerScore;
+		computerScoreShow.textContent = 'Computer Score: ' + computerScore;
+
 
 		return "You win this round!";
 		
@@ -90,10 +97,7 @@ function playRound(playerSelection, computerSelection){
 
 		return "It's a tie";
 
-	} else {
-		return "Choose Paper, Rock or Scissors";
-
-	}
+	} 
 }
 	
 // Run five times and shows winner
