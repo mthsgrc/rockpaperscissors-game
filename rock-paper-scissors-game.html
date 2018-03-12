@@ -2,109 +2,32 @@
 <html>
 <head>
 	<meta charset="utf-8">
+	<link rel="stylesheet" type="text/css" href="styles.css">
 	<title>Rock Paper Scissors Game</title>
 </head>
 <body>
+	<header> Rock Paper Scissors Game</header>
 
 
+<div class="content">
 
-	<script type="text/javascript">
-			
-			let playerScore = 0;
-			let computerScore = 0;
+	<div> 
+		<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do
+	eiusmod 
+		</p>
 
-		// Random selection Option for the Computer
-		function computerPlay(){ 
-			let r = "rock";
-			let p = "paper";
-			let s = "scissors";
-			let computerResult = Math.random(); 			
-			if (computerResult <= 0.3333) {
-				computerResult = r;
-			} else if (computerResult > 0.3333 && computerResult <= 0.6666) {
-				computerResult = p;
-			} else {
-				computerResult = s;
-			}
-			return computerResult;
-		}
+	<button id="rock" class="playerSelection rock">Rock</button>	 
+	<button id="paper" class="playerSelection">Paper</button>	 
+	<button id="scissors" class="playerSelection">Scissors</button>	 
 
-		//Play Single Round of the game
-		function playRound(playerSelection, computerSelection){
-
-			if ((playerSelection == "rock" && computerSelection == "paper") ||
-				 (playerSelection == "paper" && computerSelection == "scissors")|| 
-				 (playerSelection == "scissors" && computerSelection == "rock")){ 
-				
-				console.log(playerSelection + " " + computerSelection);
-				computerScore ++;
-				return "You lose this round!";
-
-			} else if ((playerSelection == "rock" && computerSelection == "scissors")||
-			  			 	(playerSelection == "paper" &&computerSelection == "rock") || 
-			  			 	(playerSelection == "scissors" && computerSelection == "paper")) {
-
-				console.log(playerSelection + " " + computerSelection);
-				playerScore ++;
-				return "You win this round!";
+	</div>
+	<div class="results">
 		
-			} else if (playerSelection == computerSelection){
+	</div>
 
-				console.log(playerSelection + " " + computerSelection);
-				return "It's a tie";
+</div>
 
-			} else {
-				return "Choose Paper, Rock or Scissors";
-
-			}
-		}
-			
-			// Run five times and shows winner
-			function game(){	
-				let roundsCount = 0;
-				
-				while (roundsCount <= 5){
-			let playerSelection = prompt("Choose your force", "Paper - Rock - Scissors").toLowerCase();
-
-			let computerSelection = computerPlay();
-		
-			console.log(playRound(playerSelection, computerSelection));
-			
-			console.log("Player Score: " + playerScore + " Computer Score: " + computerScore);
-
-				roundsCount ++;
-			}
-
-			if (playerScore > computerScore) {
-				console.log("You win this Game")
-			} else {
-				console.log("You lose this Game =(")
-			}
-		}
-	
-			// } else if (playerSelection == "paper" &&computerSelection == "rock") {
-			// 	console.log(playerSelection + " " + computerSelection);
-
-			// 	// playerScore ++;
-			// 	// return "You win! Paper beats Rock";
-
-			// } else if (playerSelection == "paper" && computerSelection == "scissors") {
-			// 	console.log(playerSelection + " " + computerSelection);
-
-			// 	// computerScore ++;
-			// 	// return "You lose! Scissors beats Paper";
-
-			// } else if (playerSelection == "scissors" && computerSelection == "paper") {
-			// 	console.log(playerSelection + " " + computerSelection);
-
-			// 	// playerScore ++;
-			// 	// return "You win! Scissors beats Paper";
-				
-			// } else if (playerSelection == "scissors" && computerSelection == "rock") {
-			// 	console.log(playerSelection + " " + computerSelection);
-			// 	// computerScore ++;
-			// 	// return "You lose! Rock beats Scissors";			
-	</script>
+	<script src="javascript.js"></script>
 </body>
 
 </html>

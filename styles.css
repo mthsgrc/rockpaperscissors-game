@@ -1,0 +1,19 @@
+header {
+	display: block;
+	position: absolute;
+	top: 0;
+	left: 0;
+	right: 0;
+	padding: 15px 0;
+	text-align: center;
+	font-family: fantasy;
+	font-weight: bold;
+	background-color: #B89090;
+}
+
+div {
+	display: block;
+	position: relative;
+	margin-top: 50px;
+	text-align: center;
+}
