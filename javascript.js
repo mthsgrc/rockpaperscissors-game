@@ -5,15 +5,9 @@ let roundsCount = 0;
 let computerSelection = computerPlay();
 let playerSelection;
 
-// rockBtn.addEventListener('click', (e) => {
-// 	console.log(rockBtn.id);
-// });
-
 // Event for buttons
 const rockBtn = document.querySelector('#rock');
 rockBtn.addEventListener('click', function(e){
-	// console.log(rockBtn.id);
-	// console.log(playerSelection, computerSelection);
 	computerSelection = computerPlay()
 	playerSelection = rockBtn.id;
 	playRound(playerSelection, computerSelection);
@@ -22,8 +16,6 @@ rockBtn.addEventListener('click', function(e){
 
 const paperBtn = document.querySelector('#paper');
 paperBtn.addEventListener('click', function(e){
-	// console.log(rockBtn.id);
-	// console.log(playerSelection, computerSelection);
 	computerSelection = computerPlay()
 	playerSelection = paperBtn.id;
 	playRound(playerSelection, computerSelection);
@@ -31,15 +23,12 @@ paperBtn.addEventListener('click', function(e){
 
 const scissorsBtn = document.querySelector('#scissors');
 scissorsBtn.addEventListener('click', function(e){
-	// console.log(rockBtn.id);
-	// console.log(playerSelection, computerSelection);
 	computerSelection = computerPlay()
 	playerSelection = scissorsBtn.id;
 	playRound(playerSelection, computerSelection);
 });
 
 // const results = document.querySelector('.results');
-
 // const para = document.createElement('p');
 // para.textContent = rockBtn.id;
 // results.appendChild(para);
@@ -67,29 +56,38 @@ function computerPlay(){
 
 //Play Single Round of the Game
 function playRound(playerSelection, computerSelection){
+	const results = document.querySelector('.results');
+
 
 	if ((playerSelection == "rock" && computerSelection == "paper") 
 		||(playerSelection == "paper" && computerSelection == "scissors")
 		||(playerSelection == "scissors" && computerSelection == "rock")){
 
-		console.log("You've choosen: " + playerSelection + " " + "Computer's choosen: " + computerSelection);
+		let resultDescLose = document.createElement('p');
+		resultDescLose.textContent = "You've choosen: " + playerSelection + " - " + "Computer's choosen: " + computerSelection + "\n You lose this round!";
+		results.appendChild(resultDescLose);
 		computerScore ++;
-		console.log("You lose this round!");
+
+
 		return "You lose this round!";
 
 	} else if ((playerSelection == "rock" && computerSelection == "scissors")
 		||(playerSelection == "paper" &&computerSelection == "rock") 
 		||(playerSelection == "scissors" && computerSelection == "paper")) {
 
-		console.log("You've choosen: " + playerSelection + " " + "Computer's choosen: " + computerSelection);
+		let resultDescWin = document.createElement('p');
+		resultDescWin.textContent = "You've choosen: " + playerSelection + " - " + "Computer's choosen: " + computerSelection + "\n You won this round!";
+		results.appendChild(resultDescWin);
 		playerScore ++;
-		console.log("You win this round!");
+
 		return "You win this round!";
 		
 	}	else if (playerSelection == computerSelection){
-		console.log("You've choosen: " + playerSelection + " " + "Computer's choosen: " + computerSelection);
+		let resultDescTie = document.createElement('p');
+		resultDescTie.textContent = "You've choosen: " + playerSelection + " - " + "Computer's choosen: " + computerSelection + "\n It is a tie!";
+		results.appendChild(resultDescTie);		
 		roundsCount--;
-		console.log("It's a tie");
+
 		return "It's a tie";
 
 	} else {

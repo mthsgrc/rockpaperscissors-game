@@ -11,9 +11,15 @@ header {
 	background-color: #B89090;
 }
 
-div {
+.content {
 	display: block;
 	position: relative;
 	margin-top: 50px;
 	text-align: center;
+}
+
+
+.results {
+	font-family: arial;
+	font-weight: lighter;
 }
