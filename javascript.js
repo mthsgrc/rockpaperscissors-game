@@ -8,6 +8,9 @@ const scissorsBtn = document.querySelector('#scissors');
 const btns = document.querySelector('.gameplay');
 const playerScoreShow = document.querySelector('.playerScore');
 const computerScoreShow = document.querySelector('.computerScore');
+const newGame = document.querySelector('.newgame');
+const results = document.querySelector('.results');
+
 
 // Event for buttons
 rockBtn.addEventListener('click', function(e){
@@ -28,6 +31,8 @@ scissorsBtn.addEventListener('click', function(e){
 	playRound("scissors");
 });
 
+newGame.addEventListener('click', () => resetGame());
+
 playerScoreShow.textContent = 'Player Score: ' + playerScore;
 computerScoreShow.textContent = 'Computer Score: ' + computerScore;
 
@@ -41,7 +46,6 @@ function computerPlay(){
 
 //Play Single Round of the Game
 function playRound(playerSelection, computerSelection = computerPlay()){
-	const results = document.querySelector('.results');
 
 	if ((playerSelection == "rock" && computerSelection == "paper") 
 		||(playerSelection == "paper" && computerSelection == "scissors")
@@ -54,11 +58,13 @@ function playRound(playerSelection, computerSelection = computerPlay()){
 
 		playerScoreShow.textContent = 'Player Score: ' + playerScore;
 		computerScoreShow.textContent = 'Computer Score: ' + computerScore;
-			if (computerScore == 3){
+			if (computerScore == 5){
 				const showWinner = document.createElement('p');
 				showWinner.textContent = "The Winner is Computer!";
 				results.appendChild(showWinner);
 				btns.classList.toggle("hidden");
+				newGame.classList.toggle("hidden");
+
 			};
 
 		return;
@@ -73,11 +79,12 @@ function playRound(playerSelection, computerSelection = computerPlay()){
 		playerScore ++;
 		playerScoreShow.textContent = 'Player Score: ' + playerScore;
 		computerScoreShow.textContent = 'Computer Score: ' + computerScore;
-			if (playerScore == 3){
+			if (playerScore == 5){
 					const showWinner = document.createElement('p');
 					showWinner.textContent = "The Winner is Player!";
 					results.appendChild(showWinner);
 					btns.classList.toggle("hidden");
+					newGame.classList.toggle("hidden");
 				};
 		return;
 		
@@ -89,3 +96,14 @@ function playRound(playerSelection, computerSelection = computerPlay()){
 	} 
 }
 	
+function resetGame(){
+	playerScore = 0;
+	computerScore = 0;
+	btns.classList.toggle("hidden");
+	newGame.classList.toggle("hidden");
+	playerScoreShow.textContent = 'Player Score: ' + playerScore;
+computerScoreShow.textContent = 'Computer Score: ' + computerScore;
+	results.textContent = "";
+	return;
+
+}

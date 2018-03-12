@@ -33,10 +33,12 @@ header {
 
 .gameplay {
 	margin-bottom: 15px;
+	font-family: arial;
 }
 
-.hidden{
+.hidden {
 	display: none;
+	/*margin-top: 250px;*/
 }
 
 .results {
