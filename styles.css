@@ -1,52 +1,71 @@
-header {
-	display: block;
-	position: absolute;
-	top: 0;
-	left: 0;
-	right: 0;
-	padding: 15px 0;
-	text-align: center;
-	font-family: fantasy;
-	font-weight: bold;
-	background-color: #B89090;
-}
-
-.playerScore {
-	float: left;
-	background-color: white; 
-	padding: 10px 5px;
-}
-
-.computerScore {
-	float: right;
-	background-color: white; 
-	padding: 10px 5px;
-
+body {
+  /* Old browsers */
+  background: #141E30;
+  /* Chrome 10-25, Safari 5.1-6 */
+  background: -webkit-linear-gradient(-45deg, #35577D, #141E30);
+  /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+  background: linear-gradient(-45deg, #35577D, #141E30);
+  margin: 0;
+  padding: 0;
 }
 
 .content {
-	display: block;
-	position: relative;
-	margin-top: 70px;
+    display: block;
+    position: relative;
+    margin-top: 70px;
+    text-align: center;
+}
+
+.header {
+    background-color: #B89090;
+    height: 25%;
+    width: 100%;
+}
+
+.game-title {
+	background-color: white;
+	/* border-bottom: thin dotted white; */
+	display: inline-block;
+	font-family: "Courier New", Arial;
+	font-size: 2.5em;
+	opacity: 0.25;
+	padding: 15px;
 	text-align: center;
 }
 
+.playerScore {
+    float: left;
+}
+
+.computerScore {
+    float: right;
+
+}
+
+.scoreStyle {
+    background-color: #D57F7F;
+    padding: 15px 25px;
+    opacity: 0.75;
+
+}
+
+
 .gameplay {
-	margin-bottom: 15px;
-	font-family: arial;
+    margin-bottom: 15px;
+    font-family: arial;
 }
 
 .hidden {
-	display: none;
-	/*margin-top: 250px;*/
+    display: none;
+    /*margin-top: 250px;*/
 }
 
 .results {
-	font-family: arial;
-	font-weight: lighter;
+    font-family: arial;
+    font-weight: lighter;
 }
 
 
 .playerselection {
-	/*display: hidden;*/
+    /*display: hidden;*/
 }
