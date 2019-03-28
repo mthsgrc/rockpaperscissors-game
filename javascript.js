@@ -33,8 +33,8 @@ scissorsBtn.addEventListener('click', function(e){
 
 newGame.addEventListener('click', () => resetGame());
 
-playerScoreShow.textContent = 'Player Score: ' + playerScore;
-computerScoreShow.textContent = 'Computer Score: ' + computerScore;
+playerScoreShow.textContent = 'Player: ' + playerScore;
+computerScoreShow.textContent = 'Enemy: ' + computerScore;
 
 
 // Random selection option for the Computer
@@ -56,8 +56,8 @@ function playRound(playerSelection, computerSelection = computerPlay()){
 		results.textContent = resultDescLose;
 		computerScore ++;
 
-		playerScoreShow.textContent = 'Player Score: ' + playerScore;
-		computerScoreShow.textContent = 'Computer Score: ' + computerScore;
+		playerScoreShow.textContent = 'Player: ' + playerScore;
+		computerScoreShow.textContent = 'Enemy: ' + computerScore;
 			if (computerScore == 5){
 				const showWinner = document.createElement('p');
 				showWinner.textContent = "The Winner is Computer!";
@@ -77,8 +77,8 @@ function playRound(playerSelection, computerSelection = computerPlay()){
 		resultDescWin = "You've choosen: " + playerSelection + " - " + "Computer's choosen: " + computerSelection + "\n You won this round!";
 		results.textContent = resultDescWin;
 		playerScore ++;
-		playerScoreShow.textContent = 'Player Score: ' + playerScore;
-		computerScoreShow.textContent = 'Computer Score: ' + computerScore;
+		playerScoreShow.textContent = 'Player: ' + playerScore;
+		computerScoreShow.textContent = 'Enemy: ' + computerScore;
 			if (playerScore == 5){
 					const showWinner = document.createElement('p');
 					showWinner.textContent = "The Winner is Player!";
@@ -101,8 +101,8 @@ function resetGame(){
 	computerScore = 0;
 	btns.classList.toggle("hidden");
 	newGame.classList.toggle("hidden");
-	playerScoreShow.textContent = 'Player Score: ' + playerScore;
-computerScoreShow.textContent = 'Computer Score: ' + computerScore;
+	playerScoreShow.textContent = 'Player: ' + playerScore;
+computerScoreShow.textContent = 'Enemy: ' + computerScore;
 	results.textContent = "";
 	return;
 
