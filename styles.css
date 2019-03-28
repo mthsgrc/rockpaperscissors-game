@@ -1,46 +1,156 @@
-body {
-  /* Old browsers */
-  background: #141E30;
-  /* Chrome 10-25, Safari 5.1-6 */
-  background: -webkit-linear-gradient(-45deg, #35577D, #141E30);
-  /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
-  background: linear-gradient(-45deg, #35577D, #141E30);
-  margin: 0;
-  padding: 0;
+html {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+
 }
 
+*,
+*:before,
+*:after {
+    box-sizing: inherit;
+}
+
+
 .content {
-    display: block;
-    position: relative;
-    margin-top: 70px;
+    background-color: #EEE;
+    border: 5px solid black;
+    border-radius: 10%;
+    display: grid;
+    grid-template-areas:
+        /* " . ..... ..... ..... ..... ..... ." */
+        " title title title title title "
+        " pl-sc . sc-divisor . en-sc "
+        " pl-sc . .......... .  en-sc "
+        " . bt-dis bt-dis bt-dis . "
+        " . rock-btn paper-btn scissors-btn . "
+        " round-btn . new-btn . rules-btn ";
+    /* " . ......... . ....... . ......... ."; */
+    grid-template-columns: repeat(5, 1fr);
+    grid-template-rows: 1fr 1fr 1fr 3fr 1fr 1fr;
+    gap: 10px;
+    max-height: 600px;
+    max-width: 600px;
+    min-width: 500px;
+    height: 75%;
+    margin: 0 auto;
+    width: 75%;
+    justify-items: center;
+    align-content: space-evenly;
+    padding: 25px 15px;
+
+}
+
+.title {
+    font-family: fantasy;
+    font-size: 1.4em;
+    font-weight: bold;
+    grid-area: title;
+}
+
+.pl-nm {
+    grid-area: pl-nm;
+}
+
+.pl-sc {
+    grid-area: pl-sc;
+}
+
+.sc-divisor {
+    grid-area: sc-divisor;
+}
+
+.en-sc {
+    grid-area: en-sc;
+}
+
+.en-nm {
+    grid-area: en-nm;
+}
+
+.pl-choice {
+    grid-area: pl-choice;
+}
+
+.en-choice {
+    grid-area: en-choice;
+}
+
+.bt-divisor {
+    grid-area: bt-divisor;
+}
+
+.battle-display {
+    border: 1px solid grey;
+    font-family: "Helvetica", sans-serif;
+    grid-area: bt-dis;
+    justify-self: stretch;
     text-align: center;
 }
 
+.rock-btn {
+    grid-area: rock-btn;
+    background-image: url("images/stone.png");
+    background-size: 75%;
+    background-repeat: no-repeat;
+    background-position: center;
+}
+
+.paper-btn {
+    grid-area: paper-btn;
+    background-image: url("images/papyrus.png");
+    background-size: 75%;
+    background-repeat: no-repeat;
+    background-position: center;
+}
+
+.scissors-btn {
+    grid-area: scissors-btn;
+    background-image: url("images/scissors2.png");
+    background-size: 75%;
+    background-repeat: no-repeat;
+    background-position: center;
+}
+
+
+.round-btn {
+    grid-area: round-btn;
+
+}
+
+.new-btn {
+    grid-area: new-btn;
+}
+
+.rules-btn {
+    grid-area: rules-btn;
+}
+
+.btn {
+    border: 3px solid black;
+    border-radius: 50%;
+    font-family: "Helvetica", sans-serif;
+    justify-self: center;
+    align-self: center;
+    height: 85px;
+    margin-top: 2px;
+    padding: 5px;
+    width: 85px;
+
+}
+
+
+
+
+
+
+/* 
 .header {
     background-color: #B89090;
     height: 25%;
     width: 100%;
 }
 
-.game-title {
-	background-color: white;
-	/* border-bottom: thin dotted white; */
-	display: inline-block;
-	font-family: "Courier New", Arial;
-	font-size: 2.5em;
-	opacity: 0.25;
-	padding: 15px;
-	text-align: center;
-}
-
-.playerScore {
-    float: left;
-}
-
-.computerScore {
-    float: right;
-
-}
 
 .scoreStyle {
     background-color: #D57F7F;
@@ -60,12 +170,12 @@ body {
     /*margin-top: 250px;*/
 }
 
-.results {
-    font-family: arial;
-    font-weight: lighter;
-}
-
 
 .playerselection {
     /*display: hidden;*/
+}
+
+.results {
+    font-family: arial;
+    font-weight: lighter;
 }
