@@ -27,7 +27,7 @@ html {
         " title title title title title "
         " pl-sc pl-sc sc-divisor en-sc en-sc "
         " pl-sc pl-sc sc-divisor en-sc en-sc "
-        " ...... bt-dis bt-dis bt-dis ...... "
+        " pl-ch bt-dis bt-dis bt-dis en-ch "
         " . rock-btn paper-btn scissors-btn . "
         " round-btn .. new-btn .. rules-btn ";
     grid-template-columns: repeat(5, 1fr);
@@ -35,7 +35,7 @@ html {
     gap: 10px;
     max-height: 500px;
     max-width: 600px;
-    min-width: 570px;
+    min-width: 600px;
     height: 75%;
     margin: 0 auto;
     width: 75%;
@@ -57,6 +57,7 @@ html {
 
 
 .pl-sc {
+    /* color: red; */
     grid-area: pl-sc;
     font-size: 2.5em;
     align-self: center;
@@ -77,13 +78,37 @@ html {
 
 }
 
+.rock-img {
+    background-image: url("images/stone.png");
+    background-size: 75%;
+    background-repeat: no-repeat;
+    background-position: center;
 
-.pl-choice {
-    grid-area: pl-choice;
+}
+.paper-img {
+    background-image: url("images/papyrus.png");
+    background-size: 75%;
+    background-repeat: no-repeat;
+    background-position: center;
+
 }
 
-.en-choice {
-    grid-area: en-choice;
+.scissors-img {
+    background-image: url("images/scissors2.png");
+    background-size: 75%;
+    background-repeat: no-repeat;
+    background-position: center;
+
+}
+
+.pl-ch {
+    grid-area: pl-ch;
+
+
+}
+
+.en-ch {
+    grid-area: en-ch;
 }
 
 .win-lose-ind {
@@ -107,12 +132,30 @@ html {
 
 
 .battle-display {
-    border: 1px solid grey;
-    box-shadow: 1px 1px 1px grey;
+    /* border-top: 1px solid grey;
+    border-bottom: 1px solid grey;*/
+    box-shadow: 0px 1px 5px grey;
     font-family: "Helvetica", sans-serif;
     grid-area: bt-dis;
     justify-self: stretch;
     text-align: center;
+}
+
+.btn-s {
+    align-self: center;
+    border: 2px solid black;
+    border-radius: 50%;
+    box-shadow: 2px 2px 2px black;
+    font-family: "Archistico";
+    font-size: 1em;
+    font-weight: bold;
+    justify-self: center;
+    height: 55px;
+    opacity: 0.8;
+    padding-top: 30px;
+    text-align: center;
+    width: 55px;
+
 }
 
 .rock-btn {
@@ -220,9 +263,4 @@ html {
 
 .playerselection {
     /*display: hidden;*/
-}
-
-.results {
-    font-family: arial;
-    font-weight: lighter;
 }

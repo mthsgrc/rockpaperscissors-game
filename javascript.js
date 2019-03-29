@@ -12,18 +12,31 @@ const results = document.querySelector('.results');
 const rulesBtn = document.querySelector('.rules-btn');
 const roundBtn = document.querySelector('.round-btn');
 
-const rulesMsg = "Choose your force: Rock beats Scissors > Scissors beats Paper > Paper beats Rock";
+const playerChoice = document.querySelector('.pl-ch');
+const enemyChoice = document.querySelector('.en-ch');
 
-// Event for buttons
 
+const rulesMsg = "Choose your force: \nRock beats Scissors > Scissors beats Paper > Paper beats Rock";
+
+playerScoreShow.textContent = 'Player > ' + playerScore;
+computerScoreShow.textContent = computerScore + ' < Enemy';
+
+
+//  ::::   Event for buttons  ::::
+
+
+// Rules Button
 rulesBtn.addEventListener('click', () => alert(rulesMsg));
 
+
+// Rounds Button
 roundBtn.addEventListener('click', () => {
-	let nround = prompt('Insert number Rounds to win the Battle:');
-	roundCount = +(nround);
+    let nround = prompt('Insert number Rounds to win the Battle:');
+    roundCount = +(nround);
 });
 
 
+// Rock Paper Scissors Listeners Button
 rockBtn.addEventListener('click', function(e) {
 
     playRound("rock");
@@ -39,10 +52,10 @@ scissorsBtn.addEventListener('click', function(e) {
     playRound("scissors");
 });
 
+
+// New Game Button
 newGame.addEventListener('click', () => resetGame());
 
-playerScoreShow.textContent = 'Player > ' + playerScore;
-computerScoreShow.textContent = computerScore + ' < Enemy' ;
 
 
 // Random selection option for the Computer
@@ -52,15 +65,48 @@ function computerPlay() {
     return computerResult;
 }
 
+
+// Set chosen players icons in battle display
+function setPlayersIcon(playerIcon, computerIcon) {
+		playerChoice.classList.remove('rock-img', 'paper-img','scissors-img');
+		enemyChoice.classList.remove('rock-img', 'paper-img','scissors-img');
+
+    switch (playerIcon) {
+        case 'rock':
+            playerChoice.classList.add('rock-img');
+            break;
+        case 'paper':
+            playerChoice.classList.add('paper-img');
+            break
+        default:
+            playerChoice.classList.add('scissors-img');
+    }
+    switch (computerIcon) {
+        case 'rock':
+            enemyChoice.classList.add('rock-img');
+            break;
+        case 'paper':
+            enemyChoice.classList.add('paper-img');
+            break
+        default:
+            enemyChoice.classList.add('scissors-img');
+    }
+}
+
+
 //Play Single Round of the Game
 function playRound(playerSelection, computerSelection = computerPlay()) {
+
+    setPlayersIcon(playerSelection, computerSelection);
+
 
     if ((playerSelection == "rock" && computerSelection == "paper") ||
         (playerSelection == "paper" && computerSelection == "scissors") ||
         (playerSelection == "scissors" && computerSelection == "rock")) {
 
         let resultDescLose = document.createElement('p');
-        resultDescLose = "You've choosen: " + playerSelection + " - " + "Computer's choosen: " + computerSelection + "\n You lose this round!";
+
+        resultDescLose = "YOU LOSE!";
         results.textContent = resultDescLose;
         computerScore++;
 
@@ -70,8 +116,6 @@ function playRound(playerSelection, computerSelection = computerPlay()) {
             const showWinner = document.createElement('p');
             showWinner.textContent = "The Winner is Computer!";
             results.appendChild(showWinner);
-            btns.classList.toggle("hidden");
-            newGame.classList.toggle("hidden");
 
         };
 
@@ -82,7 +126,7 @@ function playRound(playerSelection, computerSelection = computerPlay()) {
         (playerSelection == "scissors" && computerSelection == "paper")) {
 
         let resultDescWin = document.createElement('p');
-        resultDescWin = "You've choosen: " + playerSelection + " - " + "Computer's choosen: " + computerSelection + "\n You won this round!";
+        resultDescWin = "YOU WIN!";
         results.textContent = resultDescWin;
         playerScore++;
         playerScoreShow.textContent = 'Player > ' + playerScore;
@@ -91,26 +135,24 @@ function playRound(playerSelection, computerSelection = computerPlay()) {
             const showWinner = document.createElement('p');
             showWinner.textContent = "The Winner is Player!";
             results.appendChild(showWinner);
-            btns.classList.toggle("hidden");
-            newGame.classList.toggle("hidden");
         };
         return;
 
     } else if (playerSelection == computerSelection) {
         let resultDescTie = document.createElement('p');
-        resultDescTie = "You've choosen: " + playerSelection + " - " + "Computer's choosen: " + computerSelection + "\n It is a tie!";
+        resultDescTie = "IT\'S A TIE!";
         results.textContent = resultDescTie;
         return;
     }
 }
 
+
+//Reset Game Function
 function resetGame() {
     playerScore = 0;
     computerScore = 0;
-    btns.classList.toggle("hidden");
-    newGame.classList.toggle("hidden");
-    playerScoreShow.textContent = 'Player: ' + playerScore;
-    computerScoreShow.textContent = 'Enemy: ' + computerScore;
+    playerScoreShow.textContent = 'Player > ' + playerScore;
+    computerScoreShow.textContent = computerScore + ' < Enemy';
     results.textContent = "";
     return;
 
