@@ -9,17 +9,18 @@ const playerScoreShow = document.querySelector('.playerScore');
 const computerScoreShow = document.querySelector('.computerScore');
 const newGame = document.querySelector('.newgame');
 const results = document.querySelector('.results');
+const resultStyle = document.querySelector('.result-style'); 
 const rulesBtn = document.querySelector('.rules-btn');
 const roundBtn = document.querySelector('.round-btn');
+const choiceBtn = document.querySelectorAll('.rps-choice-btn');
 
 const playerChoice = document.querySelector('.pl-ch');
 const enemyChoice = document.querySelector('.en-ch');
 
 
-const rulesMsg = "Choose your force: \nRock beats Scissors > Scissors beats Paper > Paper beats Rock";
+const rulesMsg = "Choose your force: \nRock beats Scissors > Scissors beats Paper > Paper beats Rock \nYou can change number of rounds in the Round Button.";
 
-playerScoreShow.textContent = 'Player > ' + playerScore;
-computerScoreShow.textContent = computerScore + ' < Enemy';
+updateScore();
 
 
 //  ::::   Event for buttons  ::::
@@ -31,8 +32,9 @@ rulesBtn.addEventListener('click', () => alert(rulesMsg));
 
 // Rounds Button
 roundBtn.addEventListener('click', () => {
-    let nround = prompt('Insert number Rounds to win the Battle:');
+    let nround = prompt('Insert number of rounds to win Battle:');
     roundCount = +(nround);
+    resetGame();
 });
 
 
@@ -68,8 +70,8 @@ function computerPlay() {
 
 // Set chosen players icons in battle display
 function setPlayersIcon(playerIcon, computerIcon) {
-		playerChoice.classList.remove('rock-img', 'paper-img','scissors-img');
-		enemyChoice.classList.remove('rock-img', 'paper-img','scissors-img');
+    playerChoice.classList.remove('rock-img', 'paper-img', 'scissors-img');
+    enemyChoice.classList.remove('rock-img', 'paper-img', 'scissors-img');
 
     switch (playerIcon) {
         case 'rock':
@@ -104,44 +106,34 @@ function playRound(playerSelection, computerSelection = computerPlay()) {
         (playerSelection == "paper" && computerSelection == "scissors") ||
         (playerSelection == "scissors" && computerSelection == "rock")) {
 
-        let resultDescLose = document.createElement('p');
-
-        resultDescLose = "YOU LOSE!";
-        results.textContent = resultDescLose;
+        let resultDescLose;
+      	// resultDescLose = document.createElement('h2');
+        resultDescLose = "You Lose!";
+        resultStyle.textContent = resultDescLose;
         computerScore++;
 
-        playerScoreShow.textContent = 'Player > ' + playerScore;
-        computerScoreShow.textContent = computerScore + ' < Enemy';
-        if (computerScore == roundCount) {
-            const showWinner = document.createElement('p');
-            showWinner.textContent = "The Winner is Computer!";
-            results.appendChild(showWinner);
-
-        };
-
+        updateScore();
+        checkWinner();
         return;
 
     } else if ((playerSelection == "rock" && computerSelection == "scissors") ||
         (playerSelection == "paper" && computerSelection == "rock") ||
         (playerSelection == "scissors" && computerSelection == "paper")) {
 
-        let resultDescWin = document.createElement('p');
-        resultDescWin = "YOU WIN!";
-        results.textContent = resultDescWin;
+        // let resultDescWin = document.createElement('h2');
+        resultDescWin = "You win!";
+        resultStyle.textContent = resultDescWin;
         playerScore++;
-        playerScoreShow.textContent = 'Player > ' + playerScore;
-        computerScoreShow.textContent = computerScore + ' < Enemy';
-        if (playerScore == roundCount) {
-            const showWinner = document.createElement('p');
-            showWinner.textContent = "The Winner is Player!";
-            results.appendChild(showWinner);
-        };
+
+        updateScore();
+        checkWinner();
+
         return;
 
     } else if (playerSelection == computerSelection) {
-        let resultDescTie = document.createElement('p');
-        resultDescTie = "IT\'S A TIE!";
-        results.textContent = resultDescTie;
+        // let resultDescTie = document.createElement('h2');
+        resultDescTie = "It is a Tie!";
+        resultStyle.textContent = resultDescTie;
         return;
     }
 }
@@ -151,9 +143,45 @@ function playRound(playerSelection, computerSelection = computerPlay()) {
 function resetGame() {
     playerScore = 0;
     computerScore = 0;
+    updateScore();
+    showBtns();
+    resultStyle.textContent = "";
+    return;
+}
+
+//Update Score value
+function updateScore() {
     playerScoreShow.textContent = 'Player > ' + playerScore;
     computerScoreShow.textContent = computerScore + ' < Enemy';
-    results.textContent = "";
-    return;
 
+}
+
+
+function checkWinner() {
+    if (computerScore == roundCount) {
+        const showWinner = document.createElement('h2');
+        showWinner.textContent = "COMPUTER WINS GAME";
+        resultStyle.appendChild(showWinner);
+        hideBtns()
+
+
+    } else if (playerScore == roundCount) {
+        const showWinner = document.createElement('h2');
+        showWinner.textContent = "PLAYER WINS GAME!";
+        resultStyle.appendChild(showWinner);
+        hideBtns()
+
+    };
+}
+
+function hideBtns() {
+    rockBtn.classList.add('hidden');
+    paperBtn.classList.add('hidden');
+    scissorsBtn.classList.add('hidden');
+}
+
+function showBtns() {
+    rockBtn.classList.remove('hidden');
+    paperBtn.classList.remove('hidden');
+    scissorsBtn.classList.remove('hidden');
 }

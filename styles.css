@@ -1,6 +1,11 @@
 @font-face {
     font-family: "Archistico";
-    src: url("fonts/Archistico_Simple.ttf");
+    src: url("fonts/Archistico_Simple.ttf") format("truetype");
+}
+
+@font-face {
+    font-family: "Luckiest Guy";
+    src: url('fonts/LuckiestGuy-Regular.ttf') format("truetype");
 }
 
 html {
@@ -21,7 +26,7 @@ html {
     background-color: #EEE;
     border: 5px solid rgba(0, 0, 0, 0.8);
     box-shadow: 5px 5px 10px grey;
-    border-radius: 10%;
+    border-radius: 5%;
     display: grid;
     grid-template-areas:
         " title title title title title "
@@ -52,8 +57,9 @@ html {
     font-size: 2.5em;
     /* font-weight: bold; */
     grid-area: title;
-    text-align: center
+    text-align: center;
 }
+
 
 
 .pl-sc {
@@ -85,6 +91,7 @@ html {
     background-position: center;
 
 }
+
 .paper-img {
     background-image: url("images/papyrus.png");
     background-size: 75%;
@@ -111,9 +118,16 @@ html {
     grid-area: en-ch;
 }
 
+.result-style {
+    font-family: "Luckiest Guy";
+    font-size: 2em;
+
+
+}
+
 .win-lose-ind {
-  height: 50%;
-  width: 40px;
+    height: 50%;
+    width: 40px;
 }
 
 .win-lose-right {
@@ -134,11 +148,17 @@ html {
 .battle-display {
     /* border-top: 1px solid grey;
     border-bottom: 1px solid grey;*/
+    align-self: stretch;
     box-shadow: 0px 1px 5px grey;
-    font-family: "Helvetica", sans-serif;
     grid-area: bt-dis;
     justify-self: stretch;
     text-align: center;
+}
+
+.battle-display h2 {
+    font-family: "Luckiest Guy", cursive;
+    font-size: 1.3em;
+    margin-top:  25px;
 }
 
 .btn-s {
@@ -232,6 +252,13 @@ html {
 
 
 
+.hidden {
+    visibility: hidden;
+
+
+}
+
+
 
 
 /* 
@@ -258,9 +285,4 @@ html {
 .hidden {
     display: none;
     /*margin-top: 250px;*/
-}
-
-
-.playerselection {
-    /*display: hidden;*/
-}
+/* } */
